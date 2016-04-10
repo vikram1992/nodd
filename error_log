@@ -1,0 +1,66 @@
+[13-Mar-2016 04:22:54 America/Chicago] PHP Fatal error:  Call to a member function error_json() on a non-object in /home/noddapp/public_html/api/application/controllers/User.php on line 44
+[13-Mar-2016 04:22:57 America/Chicago] PHP Fatal error:  Call to a member function error_json() on a non-object in /home/noddapp/public_html/api/application/controllers/User.php on line 44
+[13-Mar-2016 04:27:21 America/Chicago] PHP Fatal error:  Call to a member function error_json() on a non-object in /home/noddapp/public_html/api/application/controllers/User.php on line 44
+[13-Mar-2016 04:28:16 America/Chicago] PHP Fatal error:  Call to a member function error_json() on a non-object in /home/noddapp/public_html/api/application/controllers/User.php on line 44
+[13-Mar-2016 04:28:18 America/Chicago] PHP Fatal error:  Call to a member function error_json() on a non-object in /home/noddapp/public_html/api/application/controllers/User.php on line 44
+[13-Mar-2016 04:53:47 America/Chicago] PHP Fatal error:  Call to a member function error_json() on a non-object in /home/noddapp/public_html/api/application/controllers/User.php on line 44
+[13-Mar-2016 04:55:56 America/Chicago] PHP Fatal error:  Call to a member function error_json() on a non-object in /home/noddapp/public_html/api/application/controllers/User.php on line 44
+[13-Mar-2016 04:56:45 America/Chicago] PHP Fatal error:  Call to a member function error_json() on a non-object in /home/noddapp/public_html/api/application/controllers/User.php on line 44
+[13-Mar-2016 04:56:48 America/Chicago] PHP Fatal error:  Call to a member function error_json() on a non-object in /home/noddapp/public_html/api/application/controllers/User.php on line 44
+[13-Mar-2016 04:57:41 America/Chicago] PHP Fatal error:  Call to a member function error_json() on a non-object in /home/noddapp/public_html/api/application/controllers/User.php on line 44
+[13-Mar-2016 04:57:43 America/Chicago] PHP Fatal error:  Call to a member function error_json() on a non-object in /home/noddapp/public_html/api/application/controllers/User.php on line 44
+[13-Mar-2016 05:58:10 America/Chicago] PHP Fatal error:  Call to undefined method UserModel::nodd_userfollow() in /home/noddapp/public_html/api/application/controllers/User.php on line 157
+[13-Mar-2016 06:45:23 America/Chicago] PHP Fatal error:  Call to undefined method CI_DB_mysqli_driver::_error_number() in /home/noddapp/public_html/api/application/controllers/User.php on line 58
+[13-Mar-2016 06:45:27 America/Chicago] PHP Fatal error:  Call to undefined method CI_DB_mysqli_driver::_error_number() in /home/noddapp/public_html/api/application/controllers/User.php on line 58
+[13-Mar-2016 06:46:08 America/Chicago] PHP Fatal error:  Call to undefined method CI_DB_mysqli_driver::_error_number() in /home/noddapp/public_html/api/application/controllers/User.php on line 58
+[13-Mar-2016 06:46:31 America/Chicago] PHP Fatal error:  Call to undefined method CI_DB_mysqli_driver::_error_number() in /home/noddapp/public_html/api/application/controllers/User.php on line 59
+[13-Mar-2016 06:47:14 America/Chicago] PHP Fatal error:  Call to undefined method CI_DB_mysqli_driver::_error_number() in /home/noddapp/public_html/api/application/controllers/User.php on line 59
+[13-Mar-2016 06:47:17 America/Chicago] PHP Fatal error:  Call to undefined method CI_DB_mysqli_driver::_error_number() in /home/noddapp/public_html/api/application/controllers/User.php on line 59
+[13-Mar-2016 06:50:20 America/Chicago] PHP Fatal error:  Call to undefined function get_user_by_mobile_no() in /home/noddapp/public_html/api/application/controllers/User.php on line 56
+[13-Mar-2016 06:50:40 America/Chicago] PHP Fatal error:  Call to undefined method UserModel::get_user_by_mobile_no() in /home/noddapp/public_html/api/application/controllers/User.php on line 56
+[13-Mar-2016 06:50:46 America/Chicago] PHP Fatal error:  Call to undefined method UserModel::get_user_by_mobile_no() in /home/noddapp/public_html/api/application/controllers/User.php on line 56
+[13-Mar-2016 06:51:49 America/Chicago] PHP Fatal error:  Call to undefined method UserModel::get_user_by_mobile_no() in /home/noddapp/public_html/api/application/controllers/User.php on line 56
+[13-Mar-2016 10:08:40 America/Chicago] PHP Fatal error:  Call to undefined method UserModel::clear_otp() in /home/noddapp/public_html/api/application/controllers/User.php on line 146
+[13-Mar-2016 10:35:18 America/Chicago] PHP Fatal error:  Call to a member function server() on a non-object in /home/noddapp/public_html/api/application/config/utilities/UserVerified.php on line 8
+[13-Mar-2016 10:35:37 America/Chicago] PHP Fatal error:  Call to a member function put() on a non-object in /home/noddapp/public_html/api/application/config/utilities/UserVerified.php on line 8
+[13-Mar-2016 10:36:41 America/Chicago] PHP Fatal error:  Call to a member function put() on a non-object in /home/noddapp/public_html/api/application/config/utilities/UserVerified.php on line 8
+[13-Mar-2016 10:41:12 America/Chicago] PHP Fatal error:  Cannot use [] for reading in /home/noddapp/public_html/api/application/config/utilities/UserVerified.php on line 8
+[13-Mar-2016 10:43:40 America/Chicago] PHP Fatal error:  Cannot use [] for reading in /home/noddapp/public_html/api/application/config/utilities/UserVerified.php on line 8
+[13-Mar-2016 10:58:00 America/Chicago] PHP Fatal error:  Call to undefined method User::is_mobile_verified() in /home/noddapp/public_html/api/application/controllers/User.php on line 16
+[13-Mar-2016 10:58:29 America/Chicago] PHP Fatal error:  Call to undefined method User::is_mobile_verified() in /home/noddapp/public_html/api/application/controllers/User.php on line 16
+[13-Mar-2016 10:58:30 America/Chicago] PHP Fatal error:  Call to undefined method User::is_mobile_verified() in /home/noddapp/public_html/api/application/controllers/User.php on line 16
+[13-Mar-2016 10:58:33 America/Chicago] PHP Fatal error:  Call to undefined method User::is_mobile_verified() in /home/noddapp/public_html/api/application/controllers/User.php on line 16
+[13-Mar-2016 10:58:35 America/Chicago] PHP Fatal error:  Call to undefined method User::is_mobile_verified() in /home/noddapp/public_html/api/application/controllers/User.php on line 16
+[13-Mar-2016 11:12:27 America/Chicago] PHP Fatal error:  Call to a member function check_login_credentials() on a non-object in /home/noddapp/public_html/api/application/controllers/Login.php on line 24
+[13-Mar-2016 11:12:28 America/Chicago] PHP Fatal error:  Call to a member function check_login_credentials() on a non-object in /home/noddapp/public_html/api/application/controllers/Login.php on line 24
+[13-Mar-2016 11:12:57 America/Chicago] PHP Fatal error:  Call to a member function check_login_credentials() on a non-object in /home/noddapp/public_html/api/application/controllers/Login.php on line 23
+[13-Mar-2016 11:13:24 America/Chicago] PHP Fatal error:  Call to a member function error_json() on a non-object in /home/noddapp/public_html/api/application/controllers/Login.php on line 36
+[13-Mar-2016 11:13:27 America/Chicago] PHP Fatal error:  Call to a member function error_json() on a non-object in /home/noddapp/public_html/api/application/controllers/Login.php on line 36
+[13-Mar-2016 12:04:40 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting function (T_FUNCTION) in /home/noddapp/public_html/api/application/controllers/Beams.php on line 172
+[13-Mar-2016 12:05:47 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting function (T_FUNCTION) in /home/noddapp/public_html/api/application/controllers/Beams.php on line 172
+[13-Mar-2016 12:09:08 America/Chicago] PHP Fatal error:  Call to a member function error_json() on a non-object in /home/noddapp/public_html/api/application/controllers/Beams.php on line 30
+[13-Mar-2016 12:09:50 America/Chicago] PHP Fatal error:  Call to a member function error_json() on a non-object in /home/noddapp/public_html/api/application/controllers/Beams.php on line 29
+[19-Mar-2016 03:06:23 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/noddapp/public_html/api/application/controllers/User.php on line 228
+[19-Mar-2016 03:14:46 America/Chicago] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/noddapp/public_html/api/application/controllers/User.php on line 217
+[19-Mar-2016 03:15:13 America/Chicago] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/noddapp/public_html/api/application/controllers/User.php on line 217
+[19-Mar-2016 03:34:51 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/noddapp/public_html/api/application/models/UserModel.php on line 129
+[19-Mar-2016 03:34:56 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/noddapp/public_html/api/application/models/UserModel.php on line 129
+[19-Mar-2016 05:59:02 America/Chicago] PHP Fatal error:  Call to a member function success_json() on a non-object in /home/noddapp/public_html/api/application/controllers/NoddList.php on line 28
+[19-Mar-2016 06:19:45 America/Chicago] PHP Fatal error:  Call to undefined method Beams::beam_date() in /home/noddapp/public_html/api/application/controllers/Beams.php on line 144
+[19-Mar-2016 06:22:54 America/Chicago] PHP Fatal error:  Call to undefined method BeamModel::get_invited_user_beam_id() in /home/noddapp/public_html/api/application/controllers/Beams.php on line 147
+[19-Mar-2016 06:29:39 America/Chicago] PHP Fatal error:  Call to undefined method Beams::get_beam_date() in /home/noddapp/public_html/api/application/controllers/Beams.php on line 149
+[22-Mar-2016 17:01:51 America/Chicago] PHP Fatal error:  Call to undefined method User::get_reference_code_id() in /home/noddapp/public_html/api/application/controllers/User.php on line 221
+[22-Mar-2016 17:19:04 America/Chicago] PHP Parse error:  syntax error, unexpected '$id' (T_VARIABLE) in /home/noddapp/public_html/api/application/controllers/User.php on line 67
+[22-Mar-2016 17:19:21 America/Chicago] PHP Parse error:  syntax error, unexpected '$insert_data' (T_VARIABLE) in /home/noddapp/public_html/api/application/controllers/User.php on line 67
+[22-Mar-2016 17:19:40 America/Chicago] PHP Parse error:  syntax error, unexpected '$id' (T_VARIABLE) in /home/noddapp/public_html/api/application/controllers/User.php on line 67
+[02-Apr-2016 22:31:27 America/Chicago] PHP Fatal error:  Call to a member function nodd_attending() on a non-object in /home/noddapp/public_html/api/application/controllers/NoddList.php on line 22
+[02-Apr-2016 22:34:47 America/Chicago] PHP Parse error:  syntax error, unexpected 'return' (T_RETURN) in /home/noddapp/public_html/api/application/models/NoddListModel.php on line 22
+[03-Apr-2016 03:21:24 America/Chicago] PHP Fatal error:  Call to undefined method UserModel::beam_image_insert() in /home/noddapp/public_html/api/application/controllers/User.php on line 500
+[03-Apr-2016 12:29:27 America/Chicago] PHP Parse error:  syntax error, unexpected ';' in /home/noddapp/public_html/api/application/controllers/User.php on line 526
+[04-Apr-2016 12:30:10 America/Chicago] PHP Parse error:  syntax error, unexpected ';' in /home/noddapp/public_html/api/application/controllers/User.php on line 526
+[04-Apr-2016 12:30:34 America/Chicago] PHP Parse error:  syntax error, unexpected ';' in /home/noddapp/public_html/api/application/controllers/User.php on line 527
+[04-Apr-2016 12:41:01 America/Chicago] PHP Parse error:  syntax error, unexpected ''Your mo' (T_ENCAPSED_AND_WHITESPACE) in /home/noddapp/public_html/api/application/controllers/User.php on line 330
+[09-Apr-2016 08:57:23 America/Chicago] PHP Parse error:  syntax error, unexpected ''Your mo' (T_ENCAPSED_AND_WHITESPACE) in /home/noddapp/public_html/api/application/controllers/User.php on line 330
+[09-Apr-2016 10:25:21 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/noddapp/public_html/api/application/controllers/Beams.php on line 107
+[10-Apr-2016 02:57:00 America/Chicago] PHP Fatal error:  Call to undefined function base_url() in /home/noddapp/public_html/api/application/controllers/User.php on line 519
+[10-Apr-2016 02:57:37 America/Chicago] PHP Fatal error:  Call to undefined function base_url() in /home/noddapp/public_html/api/application/controllers/User.php on line 519
