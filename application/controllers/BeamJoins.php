@@ -75,4 +75,24 @@ class BeamJoins extends REST_Controller {
 		}
 		$this->response($message);
 	}
+
+	public function nodding_list_get() {
+		$beam_id = $this->get('beam_id');
+		$list = $this->BeamJoinsModel->noddlist($beam_id);
+		if($list) {
+			foreach ($list as $key => $value) {
+				$noddlist[$key]['user_id'] = $value['user_id'];
+				$noddlist[$key]['isapproved'] = $value['isapproved'];
+				$noddlist[$key]['dropout'] = $value['dropout'];
+				$noddlist[$key]['image'] = $value['image'];				
+			}
+			$success = 'Nodding List';
+			$message = $this->json->success_json($success,$noddlist);
+
+		} else {
+			$error = 'Empty Nodding List';
+			$message = $this->json->error_json($error);			
+		}
+		return $this->response($message);
+	}
 }

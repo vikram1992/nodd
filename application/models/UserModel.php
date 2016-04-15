@@ -226,6 +226,66 @@ class UserModel extends CI_Model {
         return $im->result_array();
     }
 
+    public function get_beam_images($beam_id) {
+        $images = $this->db->where('beam_id',$beam_id)->select('id,image')->get('nodd_beamimages');
+        return $images->result_array();
+    }
+
+    public function delete_beam_image($beam_image_id) {
+        return $this->db->where('id',$beam_image_id)->delete('nodd_beamimages');
+    }
+
+    public function beam_rating_insert($data) {
+        $this->db->insert('nodd_beamrating',$data);
+        $id = $this->db->insert_id();
+        return $id;
+    }
+
+    public function common_friends($user_id,$other_user_id) {
+        $sql = 'SELECT nuf.followuser_id,nu.image FROM nodd_userfollow  as nuf INNER JOIN nodd_users as nu 
+        on nu.id = nuf.followuser_id WHERE user_id = '.$user_id.' AND 
+        nuf.followuser_id IN (SELECT followuser_id FROM nodd_userfollow WHERE user_id = '.$other_user_id.')';
+        $list = $this->db->query($sql);
+        return $list->result_array();
+    }
+
+    public function social_login_insert($data) {
+        $this->db->insert('nodd_sociallogin',$data);
+        $id = $this->db->insert_id();
+        return $id;
+    }
+
+    public function social_login_facebook_select($social_user_id) {
+        $user = $this->db->where('facebook_user_id',$social_user_id)->select('user_id')->get('nodd_sociallogin');
+        return $user->result_array();
+    }
+
+    public function social_login_linkedin_select($social_user_id) {
+        $user = $this->db->where('linkedin_user_id',$social_user_id)->select('user_id')->get('nodd_sociallogin');
+        return $user->result_array();
+    }    
+
+    public function organization_list_select() {
+        $list = $this->db->select('id,name')->get('nodd_organization');
+        return $list->result_array();
+    }
+
+    public function designation_list_select() {
+        $list = $this->db->select('id,name')->get('nodd_designation');
+        return $list->result_array();
+    }  
+
+    public function about_user_select($table_name,$name,$column_name) {
+        $list = $this->db->where($column_name,$name)->select('id')->get($table_name);
+        return $list->result_array();
+    }  
+
+    public function about_user_insert($table_name,$data) {
+        $this->db->insert($table_name,$data);
+        $id = $this->db->insert_id();
+        return $id;
+    }
+
 }
 
 ?>

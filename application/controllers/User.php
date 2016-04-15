@@ -10,6 +10,7 @@ class User extends REST_Controller {
 		//$this->load->library('json');
 		$this->load->model('UserModel');
 		$this->load->helper('url');
+		$this->load->library('encrypt');
 	}
 
 	public function index_get() {
@@ -96,14 +97,28 @@ class User extends REST_Controller {
 		return $this->response($message);
 	}
 
+	public function check_user_details($table_name,$name,$column_name) {
+		if(!is_null($name)) {
+			$list = $this->UserModel->about_user_select($table_name,$name,$column_name);
+			if ($list) {
+				$id = $list[0]['id'];
+				return $id;
+			} else {
+				$data = array($column_name=>$name);
+				$id = $this->UserModel->about_user_insert($table_name,$data);
+				return $id;
+			}
+		}
+	}
+
 	public function index_put() {
 		$user_id = $this->put('user_id');
 		$session_created = $this->put('session_created');   //Check whether user is logged in or not
 		$password = $this->put('password');
-		$organization_id = $this->put('organization_id');
-		$designation_id = $this->put('designation_id');
-		$university_id = $this->put('university_id');
-		$qualification_id = $this->put('qualification_id');
+		$organization = $this->put('organization');
+		$designation = $this->put('designation');
+		$university = $this->put('university');
+		$qualification = $this->put('qualification');
 		$longitude = $this->put('longitude');
 		$latitude = $this->put('latitude');
 		$interest_pipe = $this->put('interest');
@@ -112,6 +127,15 @@ class User extends REST_Controller {
 		$full_name = $this->put('full_name');
 		$username = $this->put('username');
 		$interest_split = explode('|', $interest_pipe);
+		if(!is_null($password)) {
+			$password = $this->encrypt->encode($password);
+		}
+		$organization_id = $this->check_user_details('nodd_organization',$organization,'name');
+		$designation_id = $this->check_user_details('nodd_designation',$designation,'designation');
+		$university_id = $this->check_user_details('nodd_university',$university,'university');
+		$qualification_id = $this->check_user_details('nodd_qualification',$qualification,'qualification');
+
+
 		$put_data = array('organization_id'=>$organization_id,'designation_id'=>$designation_id,'university_id'=>$university_id,
 						'qualification_id'=>$qualification_id,'latitude'=>$latitude,'longitude'=>$longitude,
 						'token'=>$token,'password'=>$password,'email'=>$email,'full_name'=>$full_name,'username'=>$username);
@@ -424,18 +448,21 @@ class User extends REST_Controller {
 		$image = 'image';
 		$message = $this->do_upload_image($user_id,$image);
 		if ($message['success']) {
-			$data = array('image'=>$message['message']['upload_data']['file_path'].$user_id.$message['message']['upload_data']['file_ext']);
+			$file_path = str_replace($message['message']['upload_data']['file_path'],str_replace('http://','',base_url()).'api/uploads/',$message['message']['upload_data']['file_path']);
+			$full_path = $file_path.$message['message']['upload_data']['file_name'];
+
+			$data = array('image'=>$full_path);
 			$updated = $this->UserModel->update_entry($user_id,$data);
 			if (!$updated) {
 				$error = 'Error in writing database';
 				$message = $this->json->error_json($error);
 			} else {
-				$success = 'Image uploade successfully';
+				$success = 'Image uploaded successfully';
 				$message = $this->json->success_json($success);
 			}
 			return $this->response($message);
 		}
-		return $message;
+		return $this->response($message);
 	}
 
 	public function show_user_following_list_get() {
@@ -467,93 +494,104 @@ class User extends REST_Controller {
 	}	
 
 	public function send_email_get() {
-				error_reporting(-1);
-				$config = array();
-                $config['useragent']           = "CodeIgniter";
-                $config['mailpath']            = "/usr/bin/sendmail"; // or "/usr/sbin/sendmail"
-                $config['protocol']            = "smtp";
-                $config['smtp_host']           = "localhost";
-                $config['smtp_port']           = "25";
-                $config['mailtype'] = 'html';
-                $config['charset']  = 'utf-8';
-                $config['newline']  = "\r\n";
-                $config['wordwrap'] = TRUE;
 
-                $this->load->library('email');
+		$config = Array(
+		'protocol' => 'smtp',
+		'smtp_host' => 'smtp.noddapp.in',
+		'smtp_port' => 25,
+		'smtp_user' => 'vikram@noddapp.in', 
+		'smtp_pass' => '!2vikram', 
+		'charset' => 'iso-8859-1',
+		'wordwrap' => TRUE
+		);
+		$this->load->library('email', $config);
+		$this->email->set_newline("\r\n");
 
-                $this->email->initialize($config);
+		$this->email->from('vikram@noddapp.in', 'Vikram');
+		$this->email->to('vikgr88@gmail.com');
+		$this->email->subject('Test');
+		$msg = "Test";
 
-                $this->email->from('techieanurag@gmail.com', 'admin');
-                $this->email->to('anurag@bloomigo.in');
-                $this->email->cc('anurag@bloomigo.in'); 
-                $this->email->bcc($this->input->post('email')); 
-                $this->email->subject('Registration Verification: Continuous Imapression');
-                $msg = "Thanks for signing up!
-            Your account has been created, 
-            you can login with your credentials after you have activated your account by pressing the url below.
-            Please click this link to activate your account";
+		$this->email->message($msg);
 
-            $this->email->message($msg);   
-            $this->email->send();
+		if ($this->email->send()) {
+			$success = 'Email send successfully';
+			$message = $this->json->success_json($success);
+		} else {
+			$error = $this->email->print_debugger();
+			$message = $this->json->error_json($error);	
+		}
+		return $this->response($message);
 	}
 
-	public function beam_images_post()
-	{
-		$flag = false;
+
+	public function beam_rating_post() {
+		$user_id = $this->post('user_id');
 		$beam_id = $this->post('beam_id');
-		$this->load->library('upload');
-		$files = $_FILES;
-		$count = count($_FILES['images']['name']);
-		for($i=0; $i<$count; $i++)
-		{
-			$_FILES['images']['name']= $files['images']['name'][$i];
-			$_FILES['images']['type']= $files['images']['type'][$i];
-			$_FILES['images']['tmp_name']= $files['images']['tmp_name'][$i];
-			$_FILES['images']['error']= $files['images']['error'][$i];
-			$_FILES['images']['size']= $files['images']['size'][$i]; 
-			$last_image_id = $this->UserModel->get_last_beam_image_id()[0]['id'];
-			if (!is_null($last_image_id)) {
-				$last_image_id = $last_image_id;
-			} else {
-				$last_image_id = 1;
-			}
-			$this->upload->initialize($this->set_upload_options($beam_id,$last_image_id));
-			if($this->upload->do_upload('images') == False)
-			{
-				$flag = true;
-			}
-			else
-			{
-				$message = $this->upload->data();
-				$file_path = str_replace($message['file_path'],str_replace('http://','',base_url()).'api/beam_images/',$message['file_path']);
-				$full_path = $file_path.$message['file_name'];
-				$data = array('beam_id'=>$beam_id,'image'=>$full_path);
-				$image_uploaded = $this->UserModel->beam_image_insert($data);
-				if ($image_uploaded) {
-					$success = 'Image uploaded successfully';
-					$message = $this->json->success_json($success);
-				} else {
-					$error = 'Error in uploading images';
-					$message = $this->json->error_json($error);
-				}
-        	}
+		$rating = $this->post('rating');
+		$data = array('user_id'=>$user_id,'beam_id'=>$beam_id,'rating'=>$rating);
+		$inserted = $this->UserModel->beam_rating_insert($data);
+		if ($inserted) {
+			$success = 'Inserted successfully';
+			$message = $this->json->success_json($success);
+		} else {
+			$error = 'Error';
+			$message = $this->json->error_json($error);
 		}
-		if ($flag) {
-            $error = 'Image not uploaded';
+		return $this->response($message);
+
+	}
+
+	public function common_friends_get() {
+		$user_id = $this->get('user_id');
+		$other_user_id = $this->get('other_user_id');
+		$list = $this->UserModel->common_friends($user_id,$other_user_id);
+		if ($list) {
+			foreach ($list as $key => $value) {
+			 	$common_friends[$value['followuser_id']] = $value['image'];
+			}
+			$success = 'Common connection list';
+			$message = $this->json->success_json($success,$common_friends);
+		} else {
+			$error = 'No Common List';
 			$message = $this->json->error_json($error);
 		}
 		return $this->response($message);
 	}
 
-	private function set_upload_options($beam_id,$last_image_id)
-	{   
-		$config['upload_path'] = './beam_images/';
-		$config['file_name'] = $beam_id.$last_image_id;
-		$config['overwrite'] = TRUE;
-		$config['allowed_types'] = 'gif|jpg|png';
-
-		return $config;
+	public function organization_list_get() {
+		$list = $this->UserModel->organization_list_select();
+		if ($list) {
+			foreach ($list as $key => $value) {
+				$organization[$key]['id'] = $value['id'];
+				$organization[$key]['name'] = $value['name'];		
+			}
+			$success = 'Organzation list';
+			$message = $this->json->success_json($success,$organization);
+		} else {
+			$error = 'No organization List';
+			$message = $this->json->error_json($error);			
+		}
+		return $this->response($message);
 	}
+
+	public function designation_list_get() {
+		$list = $this->UserModel->designation_list_select();
+		if ($list) {
+			foreach ($list as $key => $value) {
+				$designation[$key]['id'] = $value['id'];
+				$designation[$key]['name'] = $value['name'];		
+			}
+			$success = 'Designation list';
+			$message = $this->json->success_json($success,$designation);
+		} else {
+			$error = 'No designation List';
+			$message = $this->json->error_json($error);			
+		}
+		return $this->response($message);
+	}
+
+
 }
 
 

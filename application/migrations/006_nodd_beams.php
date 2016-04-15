@@ -17,6 +17,7 @@ class Migration_Nodd_beams extends CI_Migration {
 			 `fin_date` datetime,
 			 `fin_noppl` int(11),
 			 `fin_venue` varchar(100),
+			 `price_range` varchar(10),
 			 `isNoddOut` tinyint(1) DEFAULT 0,
  			 `iscancelled` tinyint(1) DEFAULT 0,
 			 PRIMARY KEY (`id`),

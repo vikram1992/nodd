@@ -9,7 +9,6 @@ class Migration_Nodd_referencecode extends CI_Migration {
 			 `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
 			 `mobile_no` varchar(20) NOT NULL,
  			 `reference_code` varchar(50) NULL,
- 			 UNIQUE (`mobile_no`),
  			 PRIMARY KEY(`id`)
 			) ENGINE=InnoDB DEFAULT CHARSET=utf8';
 		$this->db->query($sql);

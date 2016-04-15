@@ -21,6 +21,7 @@ class Beams extends REST_Controller {
 		$sug_date = $this->post('sug_date');
 		$sug_noppl = $this->post('sug_noppl');
 		$sug_venue = $this->post('sug_venue');
+		$price_range = $this->post('price_range');
 		// $user_verifed = (int)$this->UserModel->is_mobile_verified('id',$user_id);
 		// if($user_verifed == 1) {
 			//$sug_extract_date = date()
@@ -75,6 +76,7 @@ class Beams extends REST_Controller {
 		$fin_date = $this->put('final_date');
 		$fin_noppl = $this->put('final_noppl');
 		$fin_venue = $this->put('final_venue');
+		$price_range = $this->put('price_range');
 		$data = array('title'=>$title,'description'=>$description,'sug_place'=>$sug_place,'sug_date'=>$sug_date,
 			'sug_noppl'=>$sug_noppl,'sug_venue'=>$sug_venue,'fin_place'=>$fin_place,'fin_date'=>$fin_date,
 			'fin_noppl'=>$fin_noppl,'fin_venue'=>$fin_venue);

@@ -45,6 +45,12 @@ class BeamJoinsModel extends CI_Model {
         return $date->result_array()[0]['tot'];
     }
 
+    function noddlist($beam_id){
+        $list = $this->db->where('nb.beam_id',$beam_id)->select('nb.*,nu.image')->from('nodd_beamjoins as nb')
+        ->join('nodd_users as nu','nu.id = nb.user_id')->get();
+        return $list->result_array();
+    }
+
 }
 
 ?>
